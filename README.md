@@ -1,73 +1,130 @@
-# React + TypeScript + Vite
+# MYTODO - 任务管理应用
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+一个功能强大的任务管理应用，使用 React + TypeScript + Vite 构建，帮助用户高效管理日常任务。
 
-Currently, two official plugins are available:
+## 功能特性
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ✅ 任务管理：创建、编辑、删除和完成任务
+- ✅ 任务分类：按不同类别组织任务
+- ✅ 语音输入：支持通过语音创建任务
+- ✅ 数据可视化：任务完成情况统计和分析
+- ✅ 响应式设计：适配不同屏幕尺寸
+- ✅ 本地存储：任务数据持久化
 
-## React Compiler
+## 技术栈
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **前端框架**：React 19.2.0
+- **开发语言**：TypeScript
+- **构建工具**：Vite 7.3.1
+- **状态管理**：React Context API
+- **样式方案**：CSS
+- **API 服务**：模拟 API
 
-## Expanding the ESLint configuration
+## 安装和运行
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 前提条件
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js 18.0 或更高版本
+- npm 或 yarn
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 安装步骤
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. 克隆仓库
+
+```bash
+git clone https://github.com/Abird64/MYTODO.git
+cd MYTODO
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. 安装依赖
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+3. 启动开发服务器
+
+```bash
+npm run dev
+```
+
+4. 构建生产版本
+
+```bash
+npm run build
+```
+
+5. 预览生产版本
+
+```bash
+npm run preview
+```
+
+## 项目结构
+
+```
+MYTODO/
+├── src/
+│   ├── assets/          # 静态资源
+│   ├── components/      # 组件
+│   │   ├── Dashboard.tsx        # 仪表盘组件
+│   │   ├── Settings.tsx         # 设置组件
+│   │   ├── TaskManager.tsx      # 任务管理组件
+│   │   └── VoiceInputButton.tsx # 语音输入按钮组件
+│   ├── services/        # API 服务
+│   ├── store/           # 状态管理
+│   ├── types/           # 类型定义
+│   ├── utils/           # 工具函数
+│   ├── App.tsx          # 应用主组件
+│   └── main.tsx         # 应用入口
+├── public/              # 公共文件
+├── package.json         # 项目配置
+├── tsconfig.json        # TypeScript 配置
+└── vite.config.ts       # Vite 配置
+```
+
+## 使用说明
+
+### 创建任务
+
+1. 在任务管理界面点击 "添加任务" 按钮
+2. 输入任务标题和描述
+3. 选择任务分类和截止日期
+4. 点击 "保存" 按钮
+
+### 语音输入
+
+1. 点击麦克风图标
+2. 说出任务内容，例如："明天上午 10 点开会"
+3. 系统会自动识别并创建任务
+
+### 管理任务
+
+- **编辑任务**：点击任务卡片上的编辑按钮
+- **完成任务**：点击任务卡片上的复选框
+- **删除任务**：点击任务卡片上的删除按钮
+- **筛选任务**：使用顶部的筛选器按状态或分类筛选任务
+
+### 数据统计
+
+在仪表盘界面查看任务完成情况的统计数据和图表。
+
+## 贡献指南
+
+1. Fork 本仓库
+2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 打开 Pull Request
+
+## 许可证
+
+本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
+
+## 联系方式
+
+- 项目链接：[https://github.com/Abird64/MYTODO](https://github.com/Abird64/MYTODO)
+
+---
+
+**享受高效的任务管理体验！** 🎯
